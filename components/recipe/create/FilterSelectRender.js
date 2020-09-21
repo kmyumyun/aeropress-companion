@@ -12,10 +12,10 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
-import SectionHeader from "../shared/SectionHeader";
+import SectionHeader from "../../shared/SectionHeader";
 import Modal from "react-native-modal";
-import { FilterOptions } from "../../resources/PickerOptions";
-import { GlobalStyles } from "../../GlobalStyles";
+import { FilterOptions } from "../../../resources/PickerOptions";
+import { GlobalStyles } from "../../../GlobalStyles";
 import { AntDesign, Feather } from "@expo/vector-icons";
 
 export default class FilterSelectRender extends React.Component {

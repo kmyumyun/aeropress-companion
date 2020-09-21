@@ -2,7 +2,7 @@ import React from "react";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import CreateRecipeScreen from "../../../screens/recipes/CreateRecipeScreen";
-import CreateRecipe from "../../CreateRecipe";
+import CreateRecipe from "../../recipe/create/CreateRecipe";
 import { Text, View } from "react-native";
 import Header from "../Header";
 
