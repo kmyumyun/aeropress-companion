@@ -7,6 +7,7 @@ const recipeDefaultState = {
   temeperatureIndex: 0,
   method: 0,
   filters: [],
+  steps: [],
 };
 
 export { recipeDefaultState };

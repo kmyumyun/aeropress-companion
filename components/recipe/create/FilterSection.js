@@ -1,18 +1,18 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import SectionHeader from "../shared/SectionHeader";
+import SectionHeader from "../../shared/SectionHeader";
 import Modal from "react-native-modal";
-import { FilterOptions } from "../../resources/PickerOptions";
+import { FilterOptions } from "../../../resources/PickerOptions";
 import { Feather } from "@expo/vector-icons";
-import FilterDisplayRender from "./FilterDisplayRender";
+
 import FilterSelectRender from "./FilterSelectRender";
 import { FlatList } from "react-native-gesture-handler";
 
 import { YellowBox } from "react-native";
 
-YellowBox.ignoreWarnings([
-  "VirtualizedLists should never be nested", // TODO: Remove when fixed
-]);
+// YellowBox.ignoreWarnings([
+//   "VirtualizedLists should never be nested", // TODO: Remove when fixed
+// ]);
 
 export default class FilterSection extends React.Component {
   constructor() {
@@ -20,7 +20,6 @@ export default class FilterSection extends React.Component {
 
     this.state = {
       isModalVisible: false,
-      refresh: false,
     };
   }
 
@@ -28,37 +27,21 @@ export default class FilterSection extends React.Component {
     return <FilterSelectRender filter={item} onAddFilter={this.addFilter} />;
   };
 
-  renderFilterDisplayItem = ({ item, index }) => {
-    console.log("Item is: ", item);
-    return (
-      <FilterDisplayRender
-        filter={item}
-        index={index}
-        onDeleteFilter={this.deleteFilter}
-        onUpdateFilter={this.updateFilter}
-      />
-    );
-  };
-
   addFilter = (index) => {
     console.log("onadd", index);
     this.props.onAddFilter(index);
-    this.setState({ refresh: !this.state.refresh });
     this.hideModal();
   };
 
   updateFilter = (index, newFilter) => {
     this.props.onUpdateFilter(index, newFilter);
-    this.setState({ refresh: !this.state.refresh });
   };
 
   deleteFilter = (index) => {
     this.props.onDeleteFilter(index);
-    this.setState({ refresh: !this.state.refresh });
   };
 
   keyExtractor = (item, index) => item.id;
-  filterKeyExtractor = (item, index) => index.toString();
 
   showModal = () => {
     this.setState({ isModalVisible: true });
@@ -81,7 +64,11 @@ export default class FilterSection extends React.Component {
         >
           <View style={{ backgroundColor: "#ece6da", borderRadius: 3 }}>
             <Text
-              style={{ alignSelf: "center", fontSize: 25, paddingVertical: 5 }}
+              style={{
+                alignSelf: "center",
+                fontSize: 25,
+                paddingVertical: 5,
+              }}
             >
               Pick a Filter
             </Text>
@@ -111,14 +98,6 @@ export default class FilterSection extends React.Component {
             </View>
           </View>
         </Modal>
-        <View style={{ maxHeight: 220 }}>
-          <FlatList
-            data={this.props.filters}
-            renderItem={this.renderFilterDisplayItem}
-            keyExtractor={this.filterKeyExtractor}
-            extraData={this.state.refresh}
-          />
-        </View>
       </View>
     );
   }

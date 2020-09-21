@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import Modal from "react-native-modal";
 import { Feather } from "@expo/vector-icons";
-import { FilterOptions } from "../../resources/PickerOptions";
+import { FilterOptions } from "../../../resources/PickerOptions";
 
 export default class BrandEdit extends React.Component {
   constructor() {

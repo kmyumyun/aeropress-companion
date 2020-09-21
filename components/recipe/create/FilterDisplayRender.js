@@ -1,22 +1,7 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Button,
-  TextInput,
-  FlatList,
-  TouchableOpacity,
-  TouchableHighlight,
-  StyleSheet,
-  Image,
-  TouchableWithoutFeedback,
-} from "react-native";
-import { useForm, Controller } from "react-hook-form";
-import SectionHeader from "../shared/SectionHeader";
-import Modal from "react-native-modal";
-import { FilterOptions } from "../../resources/PickerOptions";
-import { GlobalStyles } from "../../GlobalStyles";
-import { AntDesign, Feather } from "@expo/vector-icons";
+import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
+import { FilterOptions } from "../../../resources/PickerOptions";
+import { AntDesign } from "@expo/vector-icons";
 import BrandEdit from "./BrandEdit";
 
 export default class FilterDisplayRender extends React.Component {
