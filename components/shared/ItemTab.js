@@ -6,6 +6,8 @@ import {
   View,
   TouchableOpacity,
   Button,
+  TextInput,
+  Keyboard,
 } from "react-native";
 import Modal from "react-native-modal";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -34,6 +36,27 @@ export default class ItemTab extends React.Component {
     this.hideModal();
   };
 
+  textInput = (data) => {
+    if (data === "Other") {
+      return (
+        <TextInput
+          style={{ textAlign: "center" }}
+          keyboardType="numeric"
+          placeholder="Enter your value"
+          onChangeText={(val) => {
+            this.setState({ selectedItem: val });
+          }}
+        />
+      );
+    } else {
+      return (
+        <View>
+          <Text>{data}</Text>
+        </View>
+      );
+    }
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -48,7 +71,6 @@ export default class ItemTab extends React.Component {
             </Text>
           </View>
         </TouchableOpacity>
-
         <Modal
           isVisible={this.state.isModalVisible}
           onBackButtonPress={this.hideModal}
@@ -63,20 +85,17 @@ export default class ItemTab extends React.Component {
             <View style={styles.pickerContainer}>
               <ScrollPicker
                 dataSource={this.props.options}
-                selectedIndex={this.props.optionIndex}
+                selectedIndex={0}
                 itemHeight={50}
                 wrapperHeight={160}
                 wrapperColor={styles.bgColor.backgroundColor}
                 highlightColor={"#B98929"}
-                renderItem={(data, index, isSelected) => {
-                  return (
-                    <View>
-                      <Text>{data}</Text>
-                    </View>
-                  );
-                }}
+                renderItem={(data, index, isSelected) => this.textInput(data)}
                 onValueChange={(data, selectedIndex) => {
-                  this.setState({ selectedItem: selectedIndex });
+                  if (data !== "Other") {
+                    this.setState({ selectedItem: data });
+                    Keyboard.dismiss();
+                  }
                 }}
               />
             </View>

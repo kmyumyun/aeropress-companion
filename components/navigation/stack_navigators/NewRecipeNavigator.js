@@ -5,6 +5,8 @@ import CreateRecipeScreen from "../../../screens/recipes/CreateRecipeScreen";
 import CreateRecipe from "../../recipe/create/CreateRecipe";
 import { Text, View } from "react-native";
 import Header from "../Header";
+import StepSelectionTab from "../../shared/StepSelectionTab";
+import StepDetailsTab from "../../shared/StepDetailsTab";
 
 const Stack = createStackNavigator();
 
@@ -25,6 +27,16 @@ const NewRecipeNavigator = () => {
         options={{ title: "Create New" }}
         name="Menu"
         component={CreateRecipe}
+      />
+      <Stack.Screen
+        options={{ title: "Select Step" }}
+        name="StepSelection"
+        component={StepSelectionTab}
+      />
+      <Stack.Screen
+        options={{ title: "Step Details" }}
+        name="StepDetails"
+        component={StepDetailsTab}
       />
     </Stack.Navigator>
   );

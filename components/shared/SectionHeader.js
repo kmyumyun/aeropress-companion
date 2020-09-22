@@ -17,7 +17,7 @@ export default class SectionHeader extends React.Component {
         <Text style={styles.name}>{this.props.name}</Text>
         <TouchableOpacity
           style={{ paddingRight: 5, paddingVertical: 3 }}
-          onPress={this.props.showModal}
+          onPress={this.props.onPress}
         >
           <MaterialIcons name="add-circle-outline" size={30} color="black" />
         </TouchableOpacity>

@@ -31,7 +31,6 @@ export default class CreateRecipe extends React.Component {
       filters.push(newFilterData);
       this.setState({ filters, refresh: !this.state.refresh });
     }
-    console.log("Filters REC", this.state.filters.length);
   };
 
   deleteFilter = (index) => {
@@ -43,7 +42,6 @@ export default class CreateRecipe extends React.Component {
   };
 
   updateFilter = (index, newFilter) => {
-    console.log("Is updating!");
     var filters = [...this.state.filters];
     if (filters[index] && newFilter) {
       filters[index].brand = newFilter.brand;
@@ -52,7 +50,6 @@ export default class CreateRecipe extends React.Component {
   };
 
   renderFilterDisplayItem = ({ item, index }) => {
-    console.log("Item is: ", item);
     return (
       <FilterDisplayRender
         filter={item}
@@ -82,7 +79,13 @@ export default class CreateRecipe extends React.Component {
               parentState={this.state}
             />
           }
-          ListFooterComponent={<CreateRecipeFooter steps={this.state.steps} />}
+          ListFooterComponent={
+            <CreateRecipeFooter
+              steps={this.state.steps}
+              parentState={this.state}
+              navigation={this.props.navigation}
+            />
+          }
         />
       </View>
     );

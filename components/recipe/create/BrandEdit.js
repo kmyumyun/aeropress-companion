@@ -46,7 +46,6 @@ export default class BrandEdit extends React.Component {
   render() {
     const filterData = this.props.filter;
     const filter = FilterOptions.find((x) => x.id === filterData.filterId);
-    console.log("Display filter is: ", filterData);
     if (filter && filter.allowEdit === 1) {
       return (
         <View>

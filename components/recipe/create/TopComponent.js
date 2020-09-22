@@ -19,7 +19,6 @@ import FilterDisplayRender from "./FilterDisplayRender";
 
 export default class TopComponent extends React.Component {
   renderFilterDisplayItem = ({ item, index }) => {
-    console.log("Item is: ", item);
     return (
       <FilterDisplayRender
         filter={item}
@@ -119,50 +118,38 @@ export default class TopComponent extends React.Component {
           }}
         >
           <ItemTab
-            optionIndex={this.props.parentState.coffeeAmountIndex}
             pickerText={"Coffee Amount"}
-            pickerUnitText={
-              CoffeeAmountOptions[this.props.parentState.coffeeAmountIndex] +
-              "g"
-            }
+            pickerUnitText={this.props.parentState.coffeeAmount + "g"}
             icon={coffeeBeanIcon}
             onChangeValue={(data) => {
-              this.props.setParentState({ coffeeAmountIndex: data });
+              this.props.setParentState({ coffeeAmount: data });
             }}
             options={CoffeeAmountOptions}
           />
           <ItemTab
-            optionIndex={this.props.parentState.waterAmountIndex}
             pickerText={"Water Amount"}
-            pickerUnitText={
-              WaterAmountOptions[this.props.parentState.waterAmountIndex] + "mL"
-            }
+            pickerUnitText={this.props.parentState.waterAmount + "mL"}
             icon={waterIcon}
             onChangeValue={(data) => {
-              this.props.setParentState({ waterAmountIndex: data });
+              this.props.setParentState({ waterAmount: data });
             }}
             options={WaterAmountOptions}
           />
           <ItemTab
-            optionIndex={this.props.parentState.grindIndex}
             pickerText={"Grind Setting"}
-            pickerUnitText={GrindOptions[this.props.parentState.grindIndex]}
+            pickerUnitText={this.props.parentState.grind}
             icon={grindSettingIcon}
             onChangeValue={(data) => {
-              this.props.setParentState({ grindIndex: data });
+              this.props.setParentState({ grind: data });
             }}
             options={GrindOptions}
           />
           <ItemTab
-            optionIndex={this.props.parentState.temeperatureIndex}
             pickerText={"Temperature"}
-            pickerUnitText={
-              TemeperatureOptions[this.props.parentState.temeperatureIndex] +
-              "\u00b0C"
-            }
+            pickerUnitText={this.props.parentState.temeperature + "\u00b0C"}
             icon={temperatureIcon}
             onChangeValue={(data) => {
-              this.props.setParentState({ temeperatureIndex: data });
+              this.props.setParentState({ temeperature: data });
             }}
             options={TemeperatureOptions}
           />

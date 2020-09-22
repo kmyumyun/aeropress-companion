@@ -28,7 +28,6 @@ export default class FilterSection extends React.Component {
   };
 
   addFilter = (index) => {
-    console.log("onadd", index);
     this.props.onAddFilter(index);
     this.hideModal();
   };
@@ -55,7 +54,7 @@ export default class FilterSection extends React.Component {
     return (
       <View>
         <View>
-          <SectionHeader name={"Filters"} showModal={this.showModal} />
+          <SectionHeader name={"Filters"} onPress={this.showModal} />
         </View>
         <Modal
           isVisible={this.state.isModalVisible}

@@ -18,14 +18,21 @@ export default class CreateRecipeFooter extends React.Component {
   };
 
   hideModal = () => {
-    this.state.isModalVisible = false;
+    this.props.navigation.navigate("StepSelection");
   };
 
   render() {
     return (
       <View>
         <View>
-          <SectionHeader name={"Steps"} showModal={this.showModal} />
+          <SectionHeader
+            name={"Steps"}
+            onPress={() =>
+              this.props.navigation.navigate("StepSelection", {
+                method: this.props.parentState.method,
+              })
+            }
+          />
         </View>
         <View>
           <FlatList
