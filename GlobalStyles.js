@@ -14,4 +14,15 @@ export const GlobalStyles = StyleSheet.create({
     backgroundColor: "#ece6da",
     flex: 1,
   },
+  backgroundDark: {
+    backgroundColor: "#e2cebd",
+    flex: 1,
+  },
 });
+
+export const GlobalConstants = {
+  colors: {
+    backgroundDark: "#e2cebd",
+    backgroundLight: "#ece6da",
+  },
+};

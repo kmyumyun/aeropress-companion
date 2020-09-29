@@ -12,6 +12,10 @@ import {
 import Modal from "react-native-modal";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ScrollPicker from "react-native-picker-scrollview";
+import {
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+} from "react-native-responsive-dimensions";
 
 export default class ItemTab extends React.Component {
   constructor(props) {
@@ -62,10 +66,15 @@ export default class ItemTab extends React.Component {
       <View style={styles.container}>
         <TouchableOpacity
           onPress={this.showModal}
-          style={{ justifyContent: "center", alignItems: "center" }}
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          <Image source={this.props.icon} style={{ height: 80, width: 80 }} />
           <View>
+            <Image source={this.props.icon} style={styles.icon} />
+          </View>
+          <View style={{ backgroundColor: "red" }}>
             <Text style={{ color: "#ff6600", textAlign: "center" }}>
               {this.props.pickerUnitText}
             </Text>
@@ -134,6 +143,7 @@ const styles = StyleSheet.create({
     borderColor: "#B98929",
     borderWidth: 2,
     borderRadius: 5,
+    alignItems: "center",
   },
   cancelButton: {
     backgroundColor: "#ff0000",
@@ -166,5 +176,9 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     justifyContent: "flex-end",
     flexDirection: "row",
+  },
+  icon: {
+    width: responsiveScreenWidth(15),
+    height: responsiveScreenHeight(8),
   },
 });

@@ -16,6 +16,10 @@ import {
   GrindOptions,
 } from "../../../resources/PickerOptions";
 import FilterDisplayRender from "./FilterDisplayRender";
+import {
+  responsiveScreenFontSize,
+  responsiveFontSize,
+} from "react-native-responsive-dimensions";
 
 export default class TopComponent extends React.Component {
   renderFilterDisplayItem = ({ item, index }) => {
@@ -35,8 +39,8 @@ export default class TopComponent extends React.Component {
     const grindSettingIcon = require("../../../assets/grind-setting.png");
     const waterIcon = require("../../../assets/water.png");
     const temperatureIcon = require("../../../assets/temperature.png");
-    const standardIcon = require("../../../assets/ap-s-v2.png");
-    const invertedIcon = require("../../../assets/ap-i-v2.png");
+    const standardIcon = require("../../../assets/ap-s.png");
+    const invertedIcon = require("../../../assets/ap-i.png");
 
     return (
       <View>
@@ -71,6 +75,7 @@ export default class TopComponent extends React.Component {
           style={{
             flexDirection: "row",
             justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <TouchableOpacity
@@ -87,7 +92,7 @@ export default class TopComponent extends React.Component {
               },
             ]}
           >
-            <Image source={standardIcon} style={{ height: 40, width: 40 }} />
+            <Image source={standardIcon} style={styles.icon} />
             <Text style={styles.methodText}>Standard</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -104,10 +109,7 @@ export default class TopComponent extends React.Component {
               },
             ]}
           >
-            <Image
-              source={invertedIcon}
-              style={{ height: 40, width: 40, tintColor: "#301C14" }}
-            />
+            <Image source={invertedIcon} style={styles.icon} />
             <Text style={styles.methodText}>Inverted</Text>
           </TouchableOpacity>
         </View>
@@ -190,16 +192,22 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 2,
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
-    width: "40%",
-    marginBottom: 10,
+    width: "46%",
     paddingVertical: 5,
     borderColor: "#B98929",
+    marginBottom: 10,
     marginHorizontal: 5,
   },
   methodText: {
-    fontSize: 20,
+    fontSize: responsiveScreenFontSize(3),
     color: "#301C14",
+  },
+  icon: {
+    height: 40,
+    width: 40,
+    marginLeft: -5,
+    marginRight: -5,
   },
 });
